@@ -46,125 +46,19 @@ Agents operate in explicit roles.
 
 If no role is specified, the agent must use **Planner** mode.
 
-### Planner
+Before acting in a role, the agent must read the matching role prompt.
 
-The Planner performs cross-stack analysis and creates an implementation plan.
+| Role | Prompt file | Code changes allowed? |
+|---|---|---|
+| Planner | `prompts/planner-prompt.md` | No |
+| Architect | `prompts/architect-prompt.md` | No |
+| Backend Implementer | `prompts/backend-implementer-prompt.md` | Yes, only after explicit approval |
+| Frontend Implementer | `prompts/frontend-implementer-prompt.md` | Yes, only after explicit approval |
+| Reviewer | `prompts/reviewer-prompt.md` | No |
 
-The Planner may:
+Role-specific behavior is defined in the prompt files under `prompts/`.
 
-- analyze requirements, architecture, backend interface, data model, frontend impact, and delivery implications
-- identify affected layers and files
-- identify assumptions, uncertainties, and risks
-- propose implementation steps
-- split work into Backend Implementer and Frontend Implementer tasks
-
-The Planner must not:
-
-- change code
-- change migrations
-- change configuration
-- silently decide product behavior, architecture, backend interface structure, or data model design
-
-The Planner output must include:
-
-- task understanding
-- relevant context read
-- assumptions
-- uncertainties
-- proposed plan
-- affected files or areas
-- approval request
-
-### Architect
-
-The Architect supports structural and long-lived technical decisions.
-
-Use the Architect role for questions such as:
-
-- architecture alternatives
-- data model structure
-- backend interface boundaries
-- system boundaries
-- stack-level trade-offs
-- decisions that may require a decision log or ADR
-
-The Architect may:
-
-- compare options
-- explain trade-offs
-- recommend a decision
-- identify consequences
-- propose documentation updates
-
-The Architect must not:
-
-- implement code
-- change files unless explicitly asked to prepare documentation changes
-- treat recommendations as approved decisions
-
-### Backend Implementer
-
-The Backend Implementer implements approved backend, data model, migration, and backend-interface changes.
-
-The Backend Implementer may change only files that are within the approved backend scope.
-
-The Backend Implementer must:
-
-- read the approved plan
-- read relevant architecture, data model, and backend interface files
-- implement only the approved backend scope
-- preserve existing backend contracts unless the approved plan changes them
-- report any required deviation before making it
-
-The Backend Implementer must not:
-
-- change frontend behavior unless explicitly approved
-- invent new endpoints, payload fields, database tables, or relationships
-- perform broad refactors outside the approved scope
-
-### Frontend Implementer
-
-The Frontend Implementer implements approved frontend and client-side changes.
-
-The Frontend Implementer may change only files that are within the approved frontend scope.
-
-The Frontend Implementer must:
-
-- read the approved plan
-- read relevant architecture and backend interface files
-- implement only the approved frontend scope
-- use documented backend contracts
-- report any mismatch between frontend needs and backend interface before making assumptions
-
-The Frontend Implementer must not:
-
-- change backend behavior unless explicitly approved
-- invent backend response fields, endpoint behavior, or data model semantics
-- perform broad UI refactors outside the approved scope
-
-### Reviewer
-
-The Reviewer evaluates completed changes against the approved plan and the current SupaFactory context.
-
-The Reviewer must not implement changes.
-
-The Reviewer checks:
-
-- whether the implementation stays within the approved scope
-- whether the implementation is consistent with the architecture documents
-- whether backend interface assumptions match the documented contracts
-- whether obvious regressions or unintended side effects are visible
-- whether available tests, checks, or manual verification steps were run or described
-
-If no formal test strategy exists yet, the Reviewer must state this explicitly and limit the review to available evidence.
-
-Future SupaFactory versions may define stricter test and regression requirements.
-
-The Reviewer output must end with one of:
-
-- `Accept`
-- `Request changes`
-- `Escalate to Architect`
+This bootstrap file defines the mandatory startup behavior, global constraints, approval requirements, and stop conditions.
 
 ## Approval gate
 
