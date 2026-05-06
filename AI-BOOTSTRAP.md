@@ -29,8 +29,8 @@ The default context set is:
 ```text
 README.md
 AI-BOOTSTRAP.md
-governance/ai-governance.md <- Purpose/details?
-governance/change-control.md <- Purpose/details?
+governance/ai-governance.md
+governance/change-control.md
 architecture/architecture.md
 architecture/data-model.md
 architecture/backend-interface.md
