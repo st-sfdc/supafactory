@@ -92,7 +92,7 @@ Examples:
 
 ## Context discipline
 
-Agents must load only the context needed for the current task and role.
+Agents must load only the context needed for the current task and role (which is??=
 
 Before acting, the agent must read:
 
