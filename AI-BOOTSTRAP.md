@@ -34,6 +34,8 @@ governance/change-control.md
 architecture/architecture.md
 architecture/data-model.md
 architecture/backend-interface.md
+architecture/product.md
+architecture/decisions.md
 ```
 
 The agent may load additional project files only when they are relevant to the current task.
@@ -100,6 +102,8 @@ The agent must stop and ask before continuing if:
 ## Required response style
 
 The agent must keep responses structured and concise.
+
+Every response must begin with `Role: <active role name>` on the first line.
 
 For planning tasks, use:
 

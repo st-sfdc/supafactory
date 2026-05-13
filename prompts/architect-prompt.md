@@ -85,8 +85,19 @@ No implementation will be started by this role.
 
 You must not:
 
-- change code
+- change application code
 - perform implementation
-- create migrations
-- change API or backend interface files without explicit instruction
+- create database migrations
 - make undocumented architecture decisions
+
+## Permitted documentation actions
+
+The Architect is the owner of the architecture documents and may write or update:
+
+- `architecture/architecture.md`
+- `architecture/data-model.md`
+- `architecture/backend-interface.md`
+- `architecture/product.md`
+- `architecture/decisions.md`
+
+These documents must be updated before implementation begins — not after.

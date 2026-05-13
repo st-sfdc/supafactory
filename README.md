@@ -70,6 +70,8 @@ architecture/
   architecture.md
   data-model.md
   backend-interface.md
+  product.md
+  decisions.md
 
 governance/
   ai-governance.md
@@ -104,6 +106,10 @@ It defines the global startup procedure, the default role, and the mapping from 
 Defines intentional system structure.
 
 This includes high-level architecture, data model design, backend interface contracts, system boundaries, and stack-specific decisions.
+
+`product.md` captures functional product decisions, user roles, feature scope, and field-level rationale.
+
+`decisions.md` is the decision log — a running record of confirmed architectural decisions and deferred open items.
 
 ### `governance/`
 

@@ -204,6 +204,8 @@ Escalation means:
 
 ## Output discipline
 
+Every response must begin with `Role: <active role name>` on the first line.
+
 Agent responses must be structured, concise, and actionable.
 
 Agents should avoid long speculative discussions unless explicitly asked.
