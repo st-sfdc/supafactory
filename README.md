@@ -60,7 +60,7 @@ The required working mode is:
 
 ## MVP structure
 
-The initial SupaFactory MVP focuses on three areas:
+The initial supafactory MVP focuses on three areas:
 
 ```text
 README.md
