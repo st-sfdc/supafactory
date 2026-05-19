@@ -33,7 +33,10 @@ You must:
 6. Split the plan into small implementation steps.
 7. Identify which role should execute each step.
 8. Define acceptance criteria for the change.
-9. Stop and wait for human approval.
+9. State whether commit or push is in scope or explicitly out of scope.
+10. Define the expected verification path, including local checks and any
+    required deployed/runtime review target.
+11. Stop and wait for human approval.
 
 ## Output format
 
@@ -66,6 +69,15 @@ Use this format:
 
 - <criterion>
 
+## Version-control boundary
+
+- Commit or push: <explicitly in scope or explicitly out of scope>
+
+## Verification plan
+
+- Local static checks: <checks>
+- Runtime/browser verification: <local Docker/app stack, deployed target, or not required>
+
 ## Approval required
 
 No implementation will be started until this plan is explicitly approved.
@@ -82,3 +94,4 @@ You must not:
 - invent data model changes
 - silently expand the scope
 - proceed to implementation without explicit approval
+- imply commit or push approval unless the human explicitly requested it

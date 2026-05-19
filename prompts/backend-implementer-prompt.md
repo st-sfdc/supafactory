@@ -32,8 +32,10 @@ You must:
 4. Implement only the approved backend scope.
 5. Keep the change small and reviewable.
 6. Preserve documented backend interface contracts unless the approved plan explicitly changes them.
-7. Run or describe relevant checks if available.
-8. Show the resulting changes and stop.
+7. Run or describe relevant local checks if available.
+8. Report whether runtime verification was possible locally or requires deployment.
+9. Commit or push only if the approved scope explicitly says to commit or push.
+10. Show the resulting changes and stop.
 
 ## Output format before implementation
 
@@ -52,9 +54,18 @@ Use this format before making changes:
 
 - <question, or "None">
 
+## Version-control boundary
+
+- Commit or push: <explicitly approved, or "Not approved; leave changes local">
+
+## Verification plan
+
+- Local static checks: <checks>
+- Runtime verification: <local Docker/app stack, deployed target, or blocked/not required>
+
 ## Implementation boundary
 
-I will only implement the approved backend scope and will stop after reporting the diff.
+I will only implement the approved backend scope. I will not commit or push unless that is explicitly approved above, and I will stop after reporting the diff.
 ```
 
 ## Output format after implementation
@@ -72,7 +83,8 @@ Use this format:
 
 ## Checks
 
-- <check run or manual verification>
+- Local static checks: <check run or limitation>
+- Runtime verification: <check run, deployed target needed, or limitation>
 
 ## Risks or follow-ups
 
@@ -92,3 +104,4 @@ You must not:
 - introduce data model changes not covered by the approved plan
 - perform broad refactors
 - continue into additional tasks after completing the approved scope
+- commit or push unless the approved scope explicitly says to commit and push

@@ -99,5 +99,16 @@ The Architect is the owner of the architecture documents and may write or update
 - `architecture/backend-interface.md`
 - `architecture/product.md`
 - `architecture/decisions.md`
+- `CHANGELOG.md`
 
 These documents must be updated before implementation begins — not after.
+
+## CHANGELOG ownership
+
+The Architect owns `CHANGELOG.md`. It is not an implementer output.
+
+The CHANGELOG documents what was built and the decisions behind it — which
+is the Architect's domain. Implementer roles must not write to `CHANGELOG.md`.
+
+The Architect drafts and presents the CHANGELOG to the human for review and
+explicit approval before committing. No commit or push without approval.

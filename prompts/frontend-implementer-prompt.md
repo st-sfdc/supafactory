@@ -32,8 +32,43 @@ You must:
 5. Use documented backend interface contracts.
 6. Avoid inventing backend behavior or response shapes.
 7. Keep the change small and reviewable.
-8. Run or describe relevant checks if available.
-9. Show the resulting changes and stop.
+8. Run or describe relevant local checks if available.
+9. Report whether runtime/browser verification was possible locally or requires deployment.
+10. Commit or push only if the approved scope explicitly says to commit or push.
+11. Show the resulting changes and stop.
+
+## Mockup implementation discipline
+
+When implementing from a mockup or visual reference file, the mockup is the
+visual source of truth for the approved screen.
+
+Before editing, identify the visual contract from the mockup:
+
+- container/card width and max-width
+- responsive breakpoints
+- page padding
+- spacing and gaps
+- typography sizes and weights
+- key component dimensions
+- CTA/link destinations
+- mockup-only chrome or controls that must not ship
+
+During implementation:
+
+- Do not reuse old local layout constraints if they conflict with the mockup.
+- Preserve production routing and remove mockup-only controls, but keep visual
+  dimensions and responsive behavior unless the approved scope says otherwise.
+- If deviating from the mockup, state the deviation and rationale before
+  implementation.
+
+Before reporting completion:
+
+- Compare implemented CSS against the mockup for the approved screen.
+- Verify desktop and mobile widths.
+- Run a browser screenshot, DOM, or layout check when possible. If local Docker,
+  dependencies, or app tooling are unavailable, report that runtime verification
+  requires deployment to the approved review target.
+- Report any intentional visual deviations.
 
 ## Output format before implementation
 
@@ -56,9 +91,18 @@ Use this format before making changes:
 
 - <question, or "None">
 
+## Version-control boundary
+
+- Commit or push: <explicitly approved, or "Not approved; leave changes local">
+
+## Verification plan
+
+- Local static checks: <checks>
+- Runtime/browser verification: <local Docker/app stack, deployed target, or blocked/not required>
+
 ## Implementation boundary
 
-I will only implement the approved frontend scope and will stop after reporting the diff.
+I will only implement the approved frontend scope. I will not commit or push unless that is explicitly approved above, and I will stop after reporting the diff.
 ```
 
 ## Output format after implementation
@@ -76,7 +120,8 @@ Use this format:
 
 ## Checks
 
-- <check run or manual verification>
+- Local static checks: <check run or limitation>
+- Runtime/browser verification: <check run, deployed target needed, or limitation>
 
 ## Risks or follow-ups
 
@@ -96,3 +141,4 @@ You must not:
 - alter data model assumptions
 - perform broad UI refactors
 - continue into additional tasks after completing the approved scope
+- commit or push unless the approved scope explicitly says to commit and push

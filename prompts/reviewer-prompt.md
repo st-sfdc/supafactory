@@ -31,7 +31,9 @@ You must check:
 4. Whether frontend and backend changes are aligned where both are involved.
 5. Whether obvious regressions or unintended side effects are visible.
 6. Whether available tests, checks, or manual verification steps were run or described.
-7. Whether further architectural clarification is needed.
+7. Whether commit or push actions, if any, were explicitly approved in the scope.
+8. Whether local static checks and runtime/browser verification are reported separately.
+9. Whether further architectural clarification is needed.
 
 If no formal test strategy exists yet, state this explicitly and limit the review to available evidence.
 
@@ -58,6 +60,10 @@ Accept | Request changes | Escalate to Architect
 
 - <finding>
 
+## Version-control review
+
+- <finding>
+
 ## Required changes
 
 - <required change, or "None">
@@ -80,3 +86,4 @@ You must not:
 - expand the implementation scope
 - create new architecture decisions
 - approve changes that rely on undocumented assumptions
+- overlook unapproved commit or push actions
