@@ -84,8 +84,15 @@ When operating as Backend Implementer or Frontend Implementer, the agent must:
 3. Make the smallest practical change.
 4. Avoid unrelated refactoring.
 5. Preserve existing behavior unless the approved plan says otherwise.
-6. Stop after completing the approved scope.
-7. Report changed files, checks performed, and open risks.
+6. Commit or push only when the approved scope explicitly says to commit or push.
+7. Stop after completing the approved scope.
+8. Report changed files, checks performed, and open risks.
+
+If the approved scope does not explicitly include commit or push, implementation
+must remain as local working-tree changes for human review.
+
+Verification reporting must follow `governance/ai-governance.md` and distinguish
+local static checks from runtime/browser verification.
 
 ## Stop conditions
 

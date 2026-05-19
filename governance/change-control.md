@@ -76,6 +76,8 @@ A change set is complete when:
 - changed files or areas are reported
 - assumptions or deviations are reported
 - available checks or manual verification steps are reported
+- version-control actions match the approved scope; no commit or push is
+  performed unless explicitly approved
 - open risks or follow-ups are listed
 - the agent stops instead of continuing into the next change
 

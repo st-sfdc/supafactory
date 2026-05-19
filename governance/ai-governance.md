@@ -56,7 +56,8 @@ AI agents must follow these rules:
 7. Do not hide assumptions.
 8. Do not treat recommendations as approved decisions.
 9. Do not continue into the next phase automatically.
-10. Stop when the current role-specific task is complete.
+10. Do not commit or push unless the approved scope explicitly says to commit or push.
+11. Stop when the current role-specific task is complete.
 
 ## Role discipline
 
@@ -89,6 +90,7 @@ Examples:
 - A Backend Implementer must not change frontend behavior.
 - A Frontend Implementer must not invent backend behavior.
 - A Reviewer must not fix issues while reviewing.
+- An Implementer must not write `CHANGELOG.md` — that is the Architect's output.
 
 ## Context discipline
 
@@ -133,6 +135,33 @@ An approved scope defines:
 - what outcome is expected
 
 If implementation reveals that the approved scope is insufficient, the agent must stop and report the issue instead of expanding the scope.
+
+## Version-control discipline
+
+Implementation roles may edit files only within the approved scope.
+
+They must not run `git commit`, `git push`, or equivalent version-control publish
+actions unless the human-approved scope explicitly includes that instruction.
+
+If commit or push is not explicitly approved, the implementation result must
+remain in the working tree and be reported for human review.
+
+## Verification discipline
+
+Agents must report verification evidence honestly and separate local static
+checks from runtime/browser verification.
+
+Local static checks include search audits, diff checks, formatting checks, and
+build or test commands available in the local environment.
+
+Runtime/browser verification requires either:
+
+- a working local Docker/app stack, or
+- an approved deployed review target, such as the current internal review server.
+
+If local Docker, dependencies, or app tooling are unavailable, the agent must
+state that runtime verification could not be completed locally and identify the
+next viable verification path.
 
 ## Decision discipline
 
