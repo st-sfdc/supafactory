@@ -194,6 +194,30 @@ Only implementation roles may change code:
 - `Backend Implementer`
 - `Frontend Implementer`
 
+Implementation roles are not self-authorizing. Naming an implementation role is
+not enough to begin implementation. Before editing files, committing, pushing,
+or running operational actions, an Implementer must have either:
+
+- a clear approved handoff from the Planner or Architect, or
+- an explicit human-approved implementation scope in the current conversation.
+
+A valid handoff must include:
+
+- the problem or expected outcome
+- files or areas in scope
+- relevant out-of-scope boundaries, if any
+- whether commit/push is approved
+
+If the user gives an Implementer an open-ended problem statement, bug report, or
+question without a clear approved scope, the Implementer may inspect narrowly
+relevant files and explain the likely approach, but must remain analysis-only
+and ask for approval or handoff clarification before acting.
+
+If implementation or verification requires infrastructure changes, secrets,
+service configuration, database resets, or operational tooling outside the
+approved application change, the Implementer must stop and escalate to the human
+or designated operations role.
+
 Implementation must stay within the approved scope.
 
 Implementation must not introduce new product, architecture, backend-interface, or data-model decisions.
@@ -205,6 +229,10 @@ Implementation details are defined in `AI-BOOTSTRAP.md` and the relevant impleme
 Reviewers evaluate changes; they must not fix issues while reviewing.
 
 Review criteria and output format are defined in `prompts/reviewer-prompt.md`.
+
+Code review and runtime verification are separate concerns. Reviewers inspect
+the diff, scope, contracts, and available evidence; they do not deploy branches
+or operate runtime environments.
 
 If no formal test strategy exists yet, the Reviewer must state this explicitly and limit the review to available evidence.
 

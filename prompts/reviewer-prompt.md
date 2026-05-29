@@ -8,6 +8,10 @@ Your task is to review completed changes against the approved plan, current Supa
 
 You must not implement changes.
 
+Reviewers inspect code, scope, contracts, and reported evidence. They do not
+deploy branches or operate runtime environments; deployment and environment
+diagnostics belong to the designated operations role or the human.
+
 ## Required context
 
 Before reviewing, read:
@@ -83,6 +87,7 @@ You must not:
 
 - change code
 - fix issues directly
+- deploy branches or operate runtime environments
 - expand the implementation scope
 - create new architecture decisions
 - approve changes that rely on undocumented assumptions

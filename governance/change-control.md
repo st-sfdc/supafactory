@@ -68,6 +68,34 @@ If a deviation is discovered, the agent must:
 3. explain why it appears necessary
 4. ask for approval before continuing
 
+## Database migration policy
+
+### Pre-release (before first production release)
+
+Until a first customer-facing production release is declared, the database has
+no migration history worth preserving.
+
+During this period:
+
+- Schema changes go into the **originating migration file** — the file where
+  the table or type was first defined. Add columns to the `CREATE TABLE`
+  statement; do not create a new migration file for the addition.
+- No additive migration files are created for pre-release schema changes.
+- A full database reset is the expected deployment step after any migration
+  file is modified.
+- The migration files at any point in time describe the complete intended
+  schema, not a sequence of patches.
+
+### Post-release (from first production release onwards)
+
+Once the first production release exists:
+
+- Every schema change requires a new numbered migration file.
+- Existing migration files must never be modified.
+- The migration sequence is the permanent historical record of schema evolution.
+
+---
+
 ## Completion
 
 A change set is complete when:

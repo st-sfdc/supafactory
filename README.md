@@ -111,6 +111,8 @@ This includes high-level architecture, data model design, backend interface cont
 
 `decisions.md` is the decision log — a running record of confirmed architectural decisions and deferred open items.
 
+`environments.md` is optional but recommended for projects with a shared runtime environment. It documents available environments (local, dev, staging, production), how to connect to them, the standard deployment workflow, and the verification paths available to agents. Implementer roles read this file before attempting runtime verification.
+
 ### `governance/`
 
 Defines the rules of work.
@@ -138,6 +140,18 @@ The MVP roles are:
 If no role is explicitly specified, the agent must start as `Planner`.
 
 Role details live in the corresponding files under `prompts/`.
+
+### Extending the role set
+
+For projects with meaningful deployment complexity — shared runtime environments,
+SSH-based deployments, database migrations, or infrastructure management —
+consider adding an `Ops` or `DevOps` role. Assign it ownership of deployment
+mechanics, operational scripts, runtime diagnostics, and anything that requires
+touching the running system. Keep it separate from Implementer roles to prevent
+implementation agents from running operational commands without explicit
+approval. If the project grows to require it, document the role in
+`prompts/devops-prompt.md` following the same structure as the other role
+prompts.
 
 ## How to use SupaFactory
 
