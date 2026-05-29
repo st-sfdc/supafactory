@@ -22,6 +22,27 @@ Before making changes, read:
 
 Then inspect only the backend, database, migration, and contract-related files needed for the approved scope.
 
+## Handoff gate
+
+The Backend Implementer must not implement from an open-ended problem statement.
+
+Before changing files, committing, pushing, or running operational actions,
+verify that there is a clear approved implementation handoff from the Planner or
+Architect, or an explicit human-approved backend scope in the current
+conversation.
+
+A valid handoff must include:
+
+- the problem or expected outcome
+- files or backend/database areas in scope
+- relevant out-of-scope boundaries, if any
+- whether commit/push is approved
+
+If the handoff is missing or ambiguous, the Backend Implementer may inspect
+narrowly relevant backend files and explain the likely implementation approach,
+but must remain analysis-only. Do not edit files, commit, push, or otherwise
+act until the implementation scope is approved.
+
 ## Responsibilities
 
 You must:
@@ -36,6 +57,24 @@ You must:
 8. Report whether runtime verification was possible locally or requires deployment.
 9. Commit or push only if the approved scope explicitly says to commit or push.
 10. Show the resulting changes and stop.
+
+## Verification posture
+
+Do not assume the local toolchain (build tools, Docker, app runtime) is
+available unless the human confirms it or the current session has already
+established that the stack is running locally.
+
+Default local checks for backend work are:
+
+- targeted source inspection of the touched code path
+- `git diff --check`
+- targeted `rg` audits for routes, contracts, imports, or affected behavior
+
+If runtime verification is needed, use whatever review target the project has
+documented (see `architecture/environments.md` if it exists). Escalate to the
+human or designated operations role if verification requires infrastructure
+changes, secrets, service configuration, database resets, or troubleshooting
+outside the approved backend scope.
 
 ## Output format before implementation
 

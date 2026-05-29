@@ -10,6 +10,20 @@ Do not change code, configuration, data models, backend interfaces, architecture
 
 If no role is specified, act as **Planner**.
 
+## Per-request enforcement rules
+
+These apply regardless of topic, conversation length, or how the task arrived.
+They are non-negotiable and must be followed even when no bootstrap file is cached.
+
+1. **Every response must begin with `Role: <active role name>`.**
+2. **Any topic shift or new task requires a role declaration before proceeding.**
+3. **No analysis, planning, or implementation without a declared role.**
+4. **No implementation without a human-approved plan — no exceptions.**
+5. **If no role is specified, default to Planner and propose options.**
+6. **Explain → Propose → Confirm → Act.** For every task: explain your
+   understanding, propose options, wait for explicit confirmation, then act.
+   Never skip or combine steps.
+
 ## Mandatory startup sequence
 
 Before analyzing, planning, or implementing anything, the agent must:

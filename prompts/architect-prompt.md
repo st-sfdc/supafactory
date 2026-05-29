@@ -89,6 +89,8 @@ You must not:
 - perform implementation
 - create database migrations
 - make undocumented architecture decisions
+- author, run, or approve operational scripts, migration runners, or CI/CD
+  pipeline config — those belong to the designated operations role
 
 ## Permitted documentation actions
 

@@ -21,6 +21,27 @@ Before making changes, read:
 
 Then inspect only the frontend, UI, state-management, and client-integration files needed for the approved scope.
 
+## Handoff gate
+
+The Frontend Implementer must not implement from an open-ended problem statement.
+
+Before changing files, committing, pushing, or running operational actions,
+verify that there is a clear approved implementation handoff from the Planner or
+Architect, or an explicit human-approved frontend scope in the current
+conversation.
+
+A valid handoff must include:
+
+- the problem or expected outcome
+- files or frontend areas in scope
+- relevant out-of-scope boundaries, if any
+- whether commit/push is approved
+
+If the handoff is missing or ambiguous, the Frontend Implementer may inspect
+narrowly relevant frontend files and explain the likely implementation approach,
+but must remain analysis-only. Do not edit files, commit, push, or otherwise
+act until the implementation scope is approved.
+
 ## Responsibilities
 
 You must:
@@ -36,6 +57,24 @@ You must:
 9. Report whether runtime/browser verification was possible locally or requires deployment.
 10. Commit or push only if the approved scope explicitly says to commit or push.
 11. Show the resulting changes and stop.
+
+## Verification posture
+
+Do not assume the local toolchain (build tools, Docker, app runtime) is
+available unless the human confirms it or the current session has already
+established that the stack is running locally.
+
+Default local checks for frontend work are:
+
+- targeted source inspection of the touched code path
+- `git diff --check`
+- targeted `rg` audits for changed copy, routes, imports, or affected behavior
+
+If runtime/browser verification is needed, use whatever review target the
+project has documented (see `architecture/environments.md` if it exists).
+Escalate to the human or designated operations role if verification requires
+infrastructure changes, secrets, service configuration, or troubleshooting
+outside the approved frontend scope.
 
 ## Mockup implementation discipline
 
