@@ -45,9 +45,9 @@ A change should usually be split when it combines independently reviewable work,
 
 ## Cross-stack changes
 
-Cross-stack work must first be planned by the `Planner`.
+Cross-stack work must first be scoped by the `Architect`.
 
-The plan should identify:
+The Architect-approved scope should identify:
 
 - affected layers
 - required decisions
@@ -68,12 +68,42 @@ If a deviation is discovered, the agent must:
 3. explain why it appears necessary
 4. ask for approval before continuing
 
+## Release process
+
+Each product release is prepared on a release branch named
+`release-x.y.z`, where `x.y.z` is the product version.
+
+The root `VERSION` file is the source of truth for the product version. On a
+release branch, the branch name and `VERSION` must match exactly. For example,
+`release-0.5.0` must contain `0.5.0` in `VERSION`.
+
+Release preparation includes:
+
+- creating or updating the matching release branch
+- intentionally updating `VERSION`
+- adding the release entry to `CHANGELOG.md`
+- verifying that the release branch contains only approved release scope
+
+Release notes must describe the final result of the release, not the internal
+path taken to get there. Do not list intermediate branches, repeated fixes,
+handoff steps, implementation sequencing, or discussion history unless they are
+the actual released outcome.
+
+CHANGELOG entries should be short and scannable:
+
+- prefer flat bullet points
+- use brief result-oriented wording
+- include user-visible, operational, or product-contract changes
+- label architecture decisions only by topic; keep detailed rationale in the
+  architecture documents
+- avoid long implementation detail, schema walkthroughs, or backend internals
+
 ## Database migration policy
 
-### Pre-release (before first production release)
+### Pre-release (all `0.x.x` releases)
 
-Until a first customer-facing production release is declared, the database has
-no migration history worth preserving.
+Until `release-1.0.0` is created and declared as the first customer-facing
+release, the database has no migration history worth preserving.
 
 During this period:
 
@@ -86,9 +116,9 @@ During this period:
 - The migration files at any point in time describe the complete intended
   schema, not a sequence of patches.
 
-### Post-release (from first production release onwards)
+### Post-release (from `release-1.0.0` onwards)
 
-Once the first production release exists:
+Once `release-1.0.0` exists:
 
 - Every schema change requires a new numbered migration file.
 - Existing migration files must never be modified.
