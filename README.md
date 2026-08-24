@@ -72,17 +72,18 @@ architecture/
   backend-interface.md
   product.md
   decisions.md
+  environments.md
 
 governance/
   ai-governance.md
   change-control.md
 
 prompts/
-  planner-prompt.md
   architect-prompt.md
   backend-implementer-prompt.md
   frontend-implementer-prompt.md
   reviewer-prompt.md
+  devops-prompt.md
 ```
 
 ## File roles
@@ -111,7 +112,7 @@ This includes high-level architecture, data model design, backend interface cont
 
 `decisions.md` is the decision log — a running record of confirmed architectural decisions and deferred open items.
 
-`environments.md` is optional but recommended for projects with a shared runtime environment. It documents available environments (local, dev, staging, production), how to connect to them, the standard deployment workflow, and the verification paths available to agents. Implementer roles read this file before attempting runtime verification.
+`environments.md` documents the available environments (local, dev, staging, production), how to connect to them, the standard deployment workflow, and the verification paths available to agents. It is the single source of truth for that information: the bootstrap file, governance files, and role prompts point here rather than naming concrete hosts, addresses, credentials, or paths. Implementer and DevOps roles read this file before attempting runtime verification.
 
 ### `governance/`
 
@@ -129,29 +130,27 @@ Prompts are operational tools. Governance defines the rules; prompts apply those
 
 SupaFactory uses explicit agent roles to avoid mixing analysis, architecture discussion, implementation, and review.
 
-The MVP roles are:
+The roles are:
 
-- `Planner`
-- `Architect`
-- `Backend Implementer`
-- `Frontend Implementer`
-- `Reviewer`
+- `Architect` — analysis, architecture decisions, documentation ownership, and implementation scoping
+- `Backend Implementer` — backend, database, API, and worker implementation within an approved scope
+- `Frontend Implementer` — client-side implementation within an approved scope
+- `Reviewer` — review of completed changes without modifying files
+- `DevOps` — deployment, operational scripts, and runtime diagnostics within an approved scope
 
-If no role is explicitly specified, the agent must start as `Planner`.
+If no role is explicitly specified, the agent must start as `Architect`.
+
+The Architect covers both architectural evaluation and cross-stack implementation
+scoping. Earlier versions of SupaFactory split this across a separate `Planner`
+role; that role has been removed and its scoping duties folded into the Architect.
+
+`DevOps` owns deployment mechanics, operational scripts, runtime diagnostics, and
+anything that requires touching the running system. It is deliberately separate
+from the Implementer roles so implementation agents cannot run operational
+commands without explicit approval. A project without deployment complexity may
+simply never invoke the role.
 
 Role details live in the corresponding files under `prompts/`.
-
-### Extending the role set
-
-For projects with meaningful deployment complexity — shared runtime environments,
-SSH-based deployments, database migrations, or infrastructure management —
-consider adding an `Ops` or `DevOps` role. Assign it ownership of deployment
-mechanics, operational scripts, runtime diagnostics, and anything that requires
-touching the running system. Keep it separate from Implementer roles to prevent
-implementation agents from running operational commands without explicit
-approval. If the project grows to require it, document the role in
-`prompts/devops-prompt.md` following the same structure as the other role
-prompts.
 
 ## How to use SupaFactory
 

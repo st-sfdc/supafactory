@@ -39,6 +39,20 @@ prompts/*.md
 = role-specific operating instructions
 ```
 
+## Governance layer ownership
+
+The governance layer — `AI-BOOTSTRAP.md`, `governance/*.md`, and `prompts/*.md`
+— is owned by the human.
+
+Agents must not change these files on their own initiative, including when a
+task would be easier under different rules. The Architect may edit them only on
+an explicit human instruction that names the intended change, and must present
+the result for review before anything is committed.
+
+No other role may modify the governance layer.
+
+## Purpose of this file
+
 This file defines durable rules and constraints.
 
 It should not duplicate detailed role prompts or full response templates unless repetition materially improves agent behavior.
@@ -48,7 +62,7 @@ It should not duplicate detailed role prompts or full response templates unless 
 AI agents must follow these rules:
 
 1. Do not change code unless operating in an implementation role.
-2. Do not implement without an approved plan.
+2. Do not implement without an approved scope.
 3. Do not silently make product, architecture, backend interface, or data model decisions.
 4. Do not expand scope without approval.
 5. Do not perform broad refactors unless explicitly approved.
@@ -63,15 +77,15 @@ AI agents must follow these rules:
 
 Agents must operate in an explicit role.
 
-If no role is specified, the agent must use `Planner`.
+If no role is specified, the agent must use `Architect`.
 
 Available MVP roles are:
 
-- `Planner`
 - `Architect`
 - `Backend Implementer`
 - `Frontend Implementer`
 - `Reviewer`
+- `DevOps`
 
 The active role determines:
 
@@ -85,7 +99,6 @@ Agents must not blend roles without approval.
 
 Examples:
 
-- A Planner must not start implementation.
 - An Architect must not treat a recommendation as an approved decision.
 - A Backend Implementer must not change frontend behavior.
 - A Frontend Implementer must not invent backend behavior.
@@ -163,6 +176,29 @@ If local Docker, dependencies, or app tooling are unavailable, the agent must
 state that runtime verification could not be completed locally and identify the
 next viable verification path.
 
+### Remote verification
+
+A project may declare that runtime and build verification does not happen on the
+local workstation at all. Where it does, `architecture/environments.md` is the
+source of truth for the available environments, their access paths, deploy
+workflows, and review targets. Governance and role prompts must not restate
+concrete hosts, addresses, credentials, or paths.
+
+When the human explicitly approves commit/push and remote verification, the
+active Implementer may deploy the pushed branch to the approved environment and
+perform narrow runtime/browser checks for the implemented scope. The Implementer
+must report the deployed branch, the verification target, and the exact checks
+performed.
+
+The Implementer must stop and escalate to `DevOps` if remote verification
+requires infrastructure changes, secrets or environment changes, service
+configuration changes, database resets or migrations, destructive commands,
+broad log/debug investigation, or troubleshooting outside the approved
+application change.
+
+An approval given for a development environment never extends to production or
+any other protected environment.
+
 ## Decision discipline
 
 Agents may recommend decisions, but they must not make decisions on behalf of the human.
@@ -177,15 +213,17 @@ The following require explicit human approval:
 - dependency or stack changes
 - deployment strategy changes
 - broad refactors
-- changes that affect multiple layers beyond the approved plan
+- changes that affect multiple layers beyond the approved scope
 
 Architectural or long-lived technical decisions should be handled by the `Architect` role.
 
-## Planning discipline
+## Architecture and scoping discipline
 
-Implementation must be preceded by an explicit plan and human approval.
+Implementation must be preceded by an explicit scope and human approval.
 
-The detailed planning format is defined in `AI-BOOTSTRAP.md` and the active role prompt.
+The Architect owns product, architecture, data-model, backend-interface,
+UI-structure, and cross-stack scoping decisions. The detailed scoping format is
+defined in `AI-BOOTSTRAP.md` and the active role prompt.
 
 ## Implementation discipline
 
@@ -196,9 +234,9 @@ Only implementation roles may change code:
 
 Implementation roles are not self-authorizing. Naming an implementation role is
 not enough to begin implementation. Before editing files, committing, pushing,
-or running operational actions, an Implementer must have either:
+deploying, or running operational actions, an Implementer must have either:
 
-- a clear approved handoff from the Planner or Architect, or
+- a clear approved handoff from the Architect, or
 - an explicit human-approved implementation scope in the current conversation.
 
 A valid handoff must include:
@@ -232,7 +270,7 @@ Review criteria and output format are defined in `prompts/reviewer-prompt.md`.
 
 Code review and runtime verification are separate concerns. Reviewers inspect
 the diff, scope, contracts, and available evidence; they do not deploy branches
-or operate runtime environments.
+or operate remote environments.
 
 If no formal test strategy exists yet, the Reviewer must state this explicitly and limit the review to available evidence.
 
@@ -247,7 +285,7 @@ The agent must stop and escalate if:
 - implementation requires an architecture decision
 - implementation requires a data model decision
 - implementation requires a backend interface decision
-- the approved plan is incomplete or unsafe
+- the approved scope is incomplete or unsafe
 - the change would require broad refactoring
 - the requested work crosses role boundaries
 - the project cannot remain in a runnable state after the change
