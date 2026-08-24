@@ -53,9 +53,9 @@ architecture/decisions.md
 architecture/environments.md
 ```
 
-These files are owned and created by the project, not shipped by the framework.
-A project may not have all of them yet. Read the ones that exist and state which
-expected context was missing.
+The framework ships these as empty templates; the project owns them and fills
+them in. A project may not have all of them populated yet. Read the ones that
+exist and state which expected context was missing or still empty.
 
 The agent may load additional project files only when they are relevant to the current task.
 
