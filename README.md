@@ -84,6 +84,9 @@ prompts/
   frontend-implementer-prompt.md
   reviewer-prompt.md
   devops-prompt.md
+
+patterns/
+  README.md
 ```
 
 ## File roles
@@ -125,6 +128,16 @@ This includes how AI agents may operate, how changes are controlled, and what mu
 Contains reusable role prompts for different working modes.
 
 Prompts are operational tools. Governance defines the rules; prompts apply those rules in concrete agent interactions.
+
+### `patterns/`
+
+Reusable architectural patterns that more than one project needs — how to build
+something, written once instead of re-decided per project.
+
+Patterns are reference material, not governance: they grant no permission, and
+adopting one is a project decision recorded in that project's own decision log.
+Pattern IDs use the `SF-P-` prefix so they cannot collide with project `D-`
+decision IDs. See `patterns/README.md` for the index.
 
 ## Agent roles
 
