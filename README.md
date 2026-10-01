@@ -172,6 +172,10 @@ The roles are:
 
 If no role is explicitly specified, the agent must start as `Architect`.
 
+Product Manager and Architect may update the product and technical documents
+assigned to their roles. They do not implement application changes; confirmed
+product and technical decisions remain under human control.
+
 The delivery flow is Product Manager → Architect → Backend/Frontend Implementer
 → Reviewer. DevOps remains a separate operational role. The Product Manager
 hands `PRODUCT_READY` Work Items to the Architect. That state means product

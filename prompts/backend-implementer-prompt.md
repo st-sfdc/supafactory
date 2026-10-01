@@ -27,9 +27,9 @@ Then inspect only the backend, database, migration, and contract-related files n
 The Backend Implementer must not implement from an open-ended problem statement.
 
 Before changing files, committing, pushing, deploying, or running operational
-actions, verify that there is a clear approved implementation handoff from the
-Architect, or an explicit human-approved backend scope in the current
-conversation.
+actions, verify both that the Architect has provided a scoped backend
+implementation task and that the human has explicitly approved that task's
+scope. Direct human approval does not replace Architect scoping.
 
 A valid handoff must include:
 

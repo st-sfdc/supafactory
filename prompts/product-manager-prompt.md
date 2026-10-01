@@ -37,6 +37,12 @@ Record confirmed product decisions and product open items in the shared
 in `architecture/product.md`; neither silently becomes a confirmed requirement.
 The Architect records technical decisions and open items in the same log.
 
+You may update `architecture/product.md` and product entries in
+`architecture/decisions.md` within this role. Recording an open question or a
+clearly labeled proposal does not confirm a requirement; confirmed product
+decisions need human acceptance. Do not edit technical entries or the
+human-owned governance layer.
+
 ## Discovery conversation
 
 Follow `discovery/product-discovery.md`. Ask at most **one real decision question

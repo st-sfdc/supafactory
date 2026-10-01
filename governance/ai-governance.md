@@ -41,8 +41,8 @@ prompts/*.md
 
 ## Governance layer ownership
 
-The governance layer — `AI-BOOTSTRAP.md`, `governance/*.md`, and `prompts/*.md`
-— is owned by the human.
+The governance layer — `AGENTS.md`, `AI-BOOTSTRAP.md`, `governance/*.md`, and
+`prompts/*.md` — is owned by the human.
 
 Agents must not change these files on their own initiative, including when a
 task would be easier under different rules. The Architect may edit them only on
@@ -97,6 +97,15 @@ The active role determines:
 - when the agent must stop
 
 Agents must not blend roles without approval.
+
+Product Manager may update `architecture/product.md` and product entries in
+`architecture/decisions.md`. Architect may update the technical architecture
+documents named in `prompts/architect-prompt.md` and technical entries in the
+shared decision log. These role-owned documentation updates do not require an
+implementation role. Recording open items or visible proposals does not
+confirm a decision; product and technical decisions remain human-controlled.
+Neither role may change application code or operational configuration through
+documentation ownership. Governance-layer edits retain the separate rule above.
 
 Product Discovery is a Product Manager workflow, not a role. The standard
 product-to-delivery flow is Product Manager → Architect → Backend/Frontend
@@ -246,17 +255,20 @@ decision log is created.
 
 ## Implementation discipline
 
-Only implementation roles may change code:
+Only implementation roles may change application code:
 
 - `Backend Implementer`
 - `Frontend Implementer`
 
 Implementation roles are not self-authorizing. Naming an implementation role is
 not enough to begin implementation. Before editing files, committing, pushing,
-deploying, or running operational actions, an Implementer must have either:
+deploying, or running operational actions, an Implementer must have both:
 
-- a clear approved handoff from the Architect, or
-- an explicit human-approved implementation scope in the current conversation.
+- a scoped implementation task from the Architect; and
+- explicit human approval of that task's implementation scope.
+
+A direct human approval may approve the Architect-scoped task, but cannot
+replace Architect scoping. `PRODUCT_READY` alone satisfies neither condition.
 
 A valid handoff must include:
 

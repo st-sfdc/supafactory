@@ -6,7 +6,12 @@ It defines how an agent must initialize context, select a role, scope work, requ
 
 ## Prime directive
 
-Do not change code, configuration, data models, backend interfaces, architecture, or project structure unless explicitly operating in an implementation role and working from an approved scope.
+Changes to application code, runtime configuration, persisted schemas, backend
+interface implementations, or non-documentation project structure require the
+appropriate implementation or DevOps role and an approved scope. Product
+Manager and Architect may update their role-owned documentation as described
+below. Documentation changes do not authorize application implementation or
+unapproved product or technical decisions.
 
 If no role is specified, act as **Architect**.
 
@@ -79,6 +84,16 @@ Before acting in a role, the agent must read the matching role prompt.
 | DevOps | `prompts/devops-prompt.md` | Yes, infrastructure only, after explicit approval |
 
 Role-specific behavior is defined in the prompt files under `prompts/`.
+
+Product Manager may update `architecture/product.md` and product decisions or
+open items in `architecture/decisions.md`. Architect may update the technical
+architecture documents named in `prompts/architect-prompt.md` and technical
+decisions or open items in the same decision log. These are documentation
+actions within their roles, not application implementation. They may record
+open questions and clearly labeled proposals; confirmed decisions still need
+human approval. The governance layer remains human-owned and may be edited by
+Architect only on an explicit human instruction, as specified in
+`governance/ai-governance.md`.
 
 The product-to-delivery flow is Product Manager → Architect → Backend/Frontend
 Implementer → Reviewer. DevOps is a separate operational role. Product

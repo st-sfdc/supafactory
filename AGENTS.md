@@ -17,7 +17,12 @@ Before analyzing, planning, reviewing, or changing anything:
 
 ## Core rule
 
-Do not change code, configuration, data models, backend interfaces, architecture, or project structure unless explicitly operating in an implementation role and working from an approved scope.
+Changes to application code, runtime configuration, persisted schemas, backend
+interface implementations, or non-documentation project structure require the
+appropriate implementation or DevOps role and an approved scope. Product
+Manager and Architect may update their role-owned documentation as defined in
+`AI-BOOTSTRAP.md` and their prompts. Documentation ownership does not authorize
+application implementation or unapproved decisions.
 
 ## Role prompts
 
