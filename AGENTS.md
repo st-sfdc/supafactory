@@ -23,11 +23,19 @@ Do not change code, configuration, data models, backend interfaces, architecture
 
 Use the appropriate role prompt:
 
+- `prompts/product-manager-prompt.md`
 - `prompts/architect-prompt.md`
 - `prompts/backend-implementer-prompt.md`
 - `prompts/frontend-implementer-prompt.md`
 - `prompts/reviewer-prompt.md`
 - `prompts/devops-prompt.md`
+
+The delivery flow is Product Manager → Architect → Backend/Frontend
+Implementer → Reviewer. DevOps is a separate operational role. Product
+Discovery is a workflow owned by Product Manager, not an agent role. A
+`PRODUCT_READY` Work Item goes to Architect for technical scoping; it does not
+authorize implementation. The human must approve the Architect-scoped task
+before an Implementer starts.
 
 ## Stop rule
 

@@ -17,6 +17,7 @@ supafactory/
   README.md
   AI-BOOTSTRAP.md
   architecture/
+  discovery/
   governance/
   prompts/
 ```
@@ -31,6 +32,7 @@ my-app/
     README.md
     AI-BOOTSTRAP.md
     architecture/
+    discovery/
     governance/
     prompts/
 ```
@@ -74,11 +76,16 @@ architecture/
   decisions.md
   environments.md
 
+discovery/
+  product-discovery.md
+  work-item-model.md
+
 governance/
   ai-governance.md
   change-control.md
 
 prompts/
+  product-manager-prompt.md
   architect-prompt.md
   backend-implementer-prompt.md
   frontend-implementer-prompt.md
@@ -111,11 +118,22 @@ Defines intentional system structure.
 
 This includes high-level architecture, data model design, backend interface contracts, system boundaries, and stack-specific decisions.
 
-`product.md` captures functional product decisions, user roles, feature scope, and field-level rationale.
+`product.md` is primarily owned by Product Manager. It captures functional
+product decisions, user roles, Capability and Feature boundaries, Work Items,
+and field-level rationale. Architect consumes it for technical scoping.
 
-`decisions.md` is the decision log — a running record of confirmed architectural decisions and deferred open items.
+`decisions.md` is the shared decision log for confirmed product and technical
+decisions and their open items. Product Manager records product entries;
+Architect records technical entries.
 
 `environments.md` documents the available environments (local, dev, staging, production), how to connect to them, the standard deployment workflow, and the verification paths available to agents. It is the single source of truth for that information: the bootstrap file, governance files, and role prompts point here rather than naming concrete hosts, addresses, credentials, or paths. Implementer and DevOps roles read this file before attempting runtime verification.
+
+### `discovery/`
+
+Defines the Product Discovery workflow and the Capability → Feature → Work Item
+→ Implementation Task hierarchy. Product Discovery is a workflow, not a role.
+Features and Work Items use the maturity states `IDEA`, `DISCOVERING`, `DEFINED`,
+`REFINING`, `PRODUCT_READY`, `IMPLEMENTING`, and `DONE`.
 
 ### `governance/`
 
@@ -145,7 +163,8 @@ SupaFactory uses explicit agent roles to avoid mixing analysis, architecture dis
 
 The roles are:
 
-- `Architect` — analysis, architecture decisions, documentation ownership, and implementation scoping
+- `Product Manager` — product discovery, product definition, Work Item refinement, and product acceptance criteria
+- `Architect` — technical architecture, system boundaries, and implementation scoping
 - `Backend Implementer` — backend, database, API, and worker implementation within an approved scope
 - `Frontend Implementer` — client-side implementation within an approved scope
 - `Reviewer` — review of completed changes without modifying files
@@ -153,9 +172,18 @@ The roles are:
 
 If no role is explicitly specified, the agent must start as `Architect`.
 
-The Architect covers both architectural evaluation and cross-stack implementation
-scoping. Earlier versions of SupaFactory split this across a separate `Planner`
-role; that role has been removed and its scoping duties folded into the Architect.
+The delivery flow is Product Manager → Architect → Backend/Frontend Implementer
+→ Reviewer. DevOps remains a separate operational role. The Product Manager
+hands `PRODUCT_READY` Work Items to the Architect. That state means product
+behavior is sufficiently specified for technical scoping; implementation still
+requires an Architect-scoped task and explicit human approval.
+
+The Product Manager explores the known Feature boundary broadly before choosing
+a Work Item. Discovery keeps confirmed decisions, proposed defaults,
+assumptions, open questions, deferred ideas, and explicit exclusions visible.
+In voice conversations it asks one real decision question at a time, retains
+unresolved questions across turns, and offers a checkpoint between continued
+broad discovery and Work Item refinement when discussion becomes mostly detail.
 
 `DevOps` owns deployment mechanics, operational scripts, runtime diagnostics, and
 anything that requires touching the running system. It is deliberately separate
@@ -171,7 +199,8 @@ For human contributors:
 
 1. Start with this file.
 2. Review `AI-BOOTSTRAP.md`.
-3. Fill or refine the relevant architecture and governance files.
+3. Use `discovery/` and fill or refine the relevant product, architecture, and
+   governance files.
 4. Use role prompts from `prompts/` when delegating work to an AI agent.
 5. Keep changes small and reviewable.
 

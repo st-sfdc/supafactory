@@ -71,6 +71,7 @@ Before acting in a role, the agent must read the matching role prompt.
 
 | Role | Prompt file | Code changes allowed? |
 |---|---|---|
+| Product Manager | `prompts/product-manager-prompt.md` | No |
 | Architect | `prompts/architect-prompt.md` | No |
 | Backend Implementer | `prompts/backend-implementer-prompt.md` | Yes, only after explicit approval |
 | Frontend Implementer | `prompts/frontend-implementer-prompt.md` | Yes, only after explicit approval |
@@ -78,6 +79,14 @@ Before acting in a role, the agent must read the matching role prompt.
 | DevOps | `prompts/devops-prompt.md` | Yes, infrastructure only, after explicit approval |
 
 Role-specific behavior is defined in the prompt files under `prompts/`.
+
+The product-to-delivery flow is Product Manager → Architect → Backend/Frontend
+Implementer → Reviewer. DevOps is a separate operational role. Product
+Discovery is the Product Manager's workflow, not an agent role. The Product
+Manager owns product definition and hands `PRODUCT_READY` Work Items to the
+Architect. The Architect owns technical architecture and implementation
+scoping. The hierarchy is Capability → Feature → Work Item → Implementation
+Task; the Product Manager does not create Implementation Tasks.
 
 This bootstrap file defines the mandatory startup behavior, global constraints, approval requirements, and stop conditions.
 
@@ -100,6 +109,11 @@ Implementation requires both:
 
 1. A specifically approved implementation scope from the human.
 2. A scoped implementation task provided by the Architect.
+
+`PRODUCT_READY` means product behavior is sufficiently specified for Architect
+handoff. It does not permit implementation. The Architect must translate it into
+technical design, affected boundaries, and implementation scope and tasks
+before the human approves implementation.
 
 Backend Implementers and Frontend Implementers must not infer their own scope
 from an open-ended user request. They may only implement from an
@@ -155,6 +169,12 @@ The agent must stop and ask before continuing if:
 The agent must keep responses structured and concise.
 
 Every response must begin with `Role: <active role name>` on the first line.
+
+For Product Manager discovery, keep a visible record of confirmed decisions,
+proposed defaults, assumptions, deferred items, and unresolved questions. Ask
+at most one real decision question at a time; keep the remaining questions
+across turns. See `prompts/product-manager-prompt.md` for the conversation and
+handoff rules.
 
 For architecture and scoping tasks, use:
 

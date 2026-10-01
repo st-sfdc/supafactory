@@ -79,8 +79,9 @@ Agents must operate in an explicit role.
 
 If no role is specified, the agent must use `Architect`.
 
-Available MVP roles are:
+Available roles are:
 
+- `Product Manager`
 - `Architect`
 - `Backend Implementer`
 - `Frontend Implementer`
@@ -97,9 +98,15 @@ The active role determines:
 
 Agents must not blend roles without approval.
 
+Product Discovery is a Product Manager workflow, not a role. The standard
+product-to-delivery flow is Product Manager → Architect → Backend/Frontend
+Implementer → Reviewer; DevOps is separate for operational work.
+
 Examples:
 
 - An Architect must not treat a recommendation as an approved decision.
+- A Product Manager must not choose technical architecture or create
+  Implementation Tasks.
 - A Backend Implementer must not change frontend behavior.
 - A Frontend Implementer must not invent backend behavior.
 - A Reviewer must not fix issues while reviewing.
@@ -132,6 +139,10 @@ Agents must distinguish between:
 - recommendations
 
 Agents must not treat or present assumptions as facts.
+
+The Product Manager may propose visible defaults for low-impact product
+choices. Defaults and assumptions must remain explicit and open to human
+correction; neither becomes a confirmed requirement silently.
 
 If an assumption affects product behavior, architecture, backend interface, data model, deployment, or project structure, the agent must pause and ask for confirmation before implementing.
 
@@ -221,9 +232,17 @@ Architectural or long-lived technical decisions should be handled by the `Archit
 
 Implementation must be preceded by an explicit scope and human approval.
 
-The Architect owns product, architecture, data-model, backend-interface,
-UI-structure, and cross-stack scoping decisions. The detailed scoping format is
-defined in `AI-BOOTSTRAP.md` and the active role prompt.
+The Product Manager primarily owns `architecture/product.md`, product discovery,
+Feature boundaries, Work Items, and product acceptance criteria. The Architect
+consumes `PRODUCT_READY` Work Items and owns technical architecture, data-model,
+backend-interface, UI-structure, and cross-stack scoping decisions, including
+Implementation Tasks. `PRODUCT_READY` means sufficient product definition for
+Architect handoff; it is not permission to implement. The detailed scoping
+format is defined in `AI-BOOTSTRAP.md` and the active role prompt.
+
+Product Manager and Architect use the same `architecture/decisions.md` log for
+their respective confirmed decisions and open items. No separate product
+decision log is created.
 
 ## Implementation discipline
 
