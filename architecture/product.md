@@ -1,50 +1,36 @@
 # Product
 
-Captures functional product decisions, user roles, feature scope, field-level rationale, and status lifecycles.
+This is the Product Manager-owned overview: purpose, users, goals, boundaries
+and links. Detailed behavior belongs in separate Feature specifications, not
+this index. Follow [the artifact model](../governance/artifact-model.md) and
+[templates](../templates/README.md).
 
-This file is primarily owned by the Product Manager. It contains the product
-definition that the Architect consumes for technical design and scoping. Keep
-it current during discovery and before implementation begins. Use
-`discovery/product-discovery.md` and `discovery/work-item-model.md` for the
-workflow, hierarchy, and maturity model.
+## Purpose and outcomes
 
-## User roles
+<!-- What the product does, for whom, and which outcomes matter. -->
 
-<!-- Define the roles users can hold in this product. -->
-<!-- Example: Homeowner, Builder, Admin -->
+## Users and product boundaries
 
-## Features in scope
+<!-- User roles, overall constraints and explicit exclusions. -->
 
-<!-- Group Features under their Capabilities. A Feature describes coherent -->
-<!-- product behavior; explore its known boundary before selecting Work Items. -->
-<!-- Give each Feature a maturity state: IDEA / DISCOVERING / DEFINED / -->
-<!-- REFINING / PRODUCT_READY / IMPLEMENTING / DONE. State is not approval. -->
+## Capability overview
 
-## Work Items
+<!-- Link to architecture/capabilities/<id>.md for each meaningful broad area.
+     Do not invent Capability layers merely to fill the hierarchy. -->
 
-<!-- List independently useful product slices under their parent Feature. -->
-<!-- Record each Work Item's maturity, user, outcome, observable behavior, -->
-<!-- variants, exclusions, dependencies, and product acceptance criteria. -->
-<!-- PRODUCT_READY requires Architect scoping and human implementation -->
-<!-- approval before any Implementer starts. -->
+## Feature overview
 
-## Discovery notes
+<!-- Link to architecture/features/<id>.md, grouped by Capability if useful.
+     Each Feature file owns its maturity, behavior, rules and current/planned
+     distinction. Do not maintain duplicate status in this index. -->
 
-<!-- Keep confirmed decisions (with D- IDs), proposed defaults, assumptions, -->
-<!-- open questions (with OI- IDs), deferred ideas, and explicit out-of-scope -->
-<!-- items visibly distinct. decisions.md is the shared decision/open-item log. -->
+## Delivery overview
 
-## Features deferred
+<!-- Link to relevant architecture/work-items/<id>.md. Work Items own their
+     product maturity and finite change. Completed records remain as history.
+     PRODUCT_READY is handoff readiness, never implementation authorization. -->
 
-<!-- List features that have been discussed but explicitly deferred. -->
-<!-- Include the reason for deferral and any known trigger for revisiting. -->
+## Discovery overview
 
-## Field-level decisions
-
-<!-- Document non-obvious decisions about specific data fields. -->
-<!-- Examples: why a field is optional, what a status value means, how a name is composed. -->
-
-## Status lifecycles
-
-<!-- Define the lifecycle states for any entity that has a status field. -->
-<!-- Example: pending → active → suspended -->
+<!-- Link to discovery/areas/<id>.md and discovery/features/<id>.md.
+     Proposals and unresolved areas remain explicit. -->

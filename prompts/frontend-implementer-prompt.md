@@ -17,7 +17,9 @@ Before making changes, read:
 - `governance/change-control.md`
 - `architecture/architecture.md`
 - `architecture/backend-interface.md`
-- the approved implementation scope
+- `governance/artifact-model.md`
+- the assigned task, exact approved scope version and linked authorization
+- the linked Work Item/Feature and relevant constraints
 
 Then inspect only the frontend, UI, state-management, and client-integration files needed for the approved scope.
 
@@ -190,3 +192,11 @@ You must not:
 - perform broad UI refactors
 - continue into additional tasks after completing the approved scope
 - commit or push unless the approved scope explicitly says to commit and push
+
+## Task evidence
+
+Append checks, changed files, limitations and completion evidence only to the
+assigned task's Execution result section. Do not edit task definitions,
+authorization, product specifications or shared architecture. Preserve the
+approved scope version. Valid authorization may resume the same unfinished
+assignment; completion ends it and any new work needs applicable authorization.

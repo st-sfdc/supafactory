@@ -6,21 +6,24 @@ implementation permission.
 
 ## Explore the Feature boundary
 
-Begin with the Capability and the Feature's intended users, problem, outcomes,
-behaviors, variants, and edge cases. Capture the complete *known* Feature
+Begin with useful Capability grouping, if established, and the Feature's
+intended users, problem, outcomes, behaviors, variants, and edge cases. Capture the complete *known* Feature
 boundary before optimizing for the smallest implementation. Unknown areas stay
 visible; discovery need not pretend to be exhaustive.
 
-Keep these categories distinct in `architecture/product.md`:
+Keep these categories distinct in the linked Feature/Work Item specification
+and Discovery note. `architecture/product.md` remains a short Product overview.
+Canonical paths and ownership are in `governance/artifact-model.md`:
 
-- **Confirmed decisions:** accepted product behavior; record the decision and
-  rationale in `architecture/decisions.md` and reference its ID in the product
-  definition.
+- **Confirmed decisions:** accepted product behavior belongs in the maintained
+  specification; record long-lived decisions and rationale in
+  `architecture/decisions.md` and reference their IDs.
 - **Proposed defaults:** sensible low-impact choices offered to the human for
   acceptance or correction; never silently treat them as confirmed.
 - **Assumptions:** unverified beliefs on which the proposed behavior depends;
   state what would validate or change them.
-- **Open questions:** unresolved product decisions; track them in the shared
+- **Open questions:** local exploration stays in the Discovery note; questions
+  requiring a durable decision use linked entries in the shared
   `architecture/decisions.md` Open items table.
 - **Deferred ideas:** potentially useful future behavior, with the reason or
   trigger for revisiting it.
@@ -65,3 +68,13 @@ items, exclusions, and deferred parts of the Feature to the Architect.
 `PRODUCT_READY` is a product handoff, not implementation approval. The Architect
 must define technical scope and Implementation Tasks; the human must approve
 that scope before an Implementer starts.
+
+## Persistent records
+
+Use one maintained Feature file for behavior and rules across deliveries. Keep
+exploration in linked project Discovery notes. Confirmed conclusions feed the
+Feature or selected Work Item; source notes remain traceable. A Work Item
+specifies a finite change, then retains its delivery history after acceptance.
+Update the Feature's delivered/planned distinction from confirmed evidence;
+never infer acceptance merely because an implementation agent finished.
+Use `templates/` for readable records rather than expanding the Product index.

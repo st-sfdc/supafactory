@@ -21,6 +21,7 @@ Before giving architectural guidance, read the relevant SupaFactory files:
 - `AI-BOOTSTRAP.md`
 - `governance/ai-governance.md`
 - `governance/change-control.md`
+- `governance/artifact-model.md`
 - `architecture/architecture.md`
 - `architecture/data-model.md`
 - `architecture/backend-interface.md`
@@ -124,6 +125,8 @@ The Architect owns the technical architecture documents and may write or update:
 - `architecture/backend-interface.md`
 - `architecture/decisions.md`
 - `architecture/environments.md`
+- `architecture/scopes/*.md`
+- `architecture/tasks/*.md` (definitions, authorization evidence and execution markers)
 - `CHANGELOG.md`
 
 These documents must be updated before implementation begins — not after.
@@ -155,3 +158,20 @@ Default CHANGELOG style:
 
 The Architect drafts and presents the CHANGELOG to the human for review and
 explicit approval before committing. No commit or push without approval.
+
+## Linked scoping and execution evidence
+
+Follow the assigned Work Item's Feature, Discovery and decision links. Maintain
+shared architecture and contracts in their canonical documents; write versioned
+scope and task records using `templates/`. Each autonomous assignment identifies
+the exact scope version, target repository, role, dependencies, allowed areas,
+exclusions, checks, separate commit/push/deploy permissions and stop condition.
+Persist direct human authorization with date and exact source at the scope or
+task; an enumerated bundle may link one scope authorization. Do not put one-time
+execution permission in `decisions.md` or infer permission from maturity.
+
+Preserve approved versions and historical results. Unchanged unfinished work may
+resume under valid existing authorization; completed assignments cannot grant
+new work. Implementers/DevOps append only their Execution result and an assigned
+Reviewer only its Review section. Maintain execution markers from their evidence;
+leave product maturity and lasting product specification to Product Manager.

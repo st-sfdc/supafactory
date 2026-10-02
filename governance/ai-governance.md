@@ -98,11 +98,12 @@ The active role determines:
 
 Agents must not blend roles without approval.
 
-Product Manager may update `architecture/product.md` and product entries in
-`architecture/decisions.md`. Architect may update the technical architecture
-documents named in `prompts/architect-prompt.md` and technical entries in the
-shared decision log. These role-owned documentation updates do not require an
-implementation role. Recording open items or visible proposals does not
+Product Manager may update the Product overview, Capability, Feature, Work Item
+and project Discovery records defined in `governance/artifact-model.md`, and
+product entries in `architecture/decisions.md`. Architect may update the technical
+architecture documents, scopes and task definitions named in
+`prompts/architect-prompt.md` and technical entries in the shared decision log.
+These role-owned documentation updates do not require an implementation role. Recording open items or visible proposals does not
 confirm a decision; product and technical decisions remain human-controlled.
 Neither role may change application code or operational configuration through
 documentation ownership. Governance-layer edits retain the separate rule above.
@@ -241,17 +242,25 @@ Architectural or long-lived technical decisions should be handled by the `Archit
 
 Implementation must be preceded by an explicit scope and human approval.
 
-The Product Manager primarily owns `architecture/product.md`, product discovery,
-Feature boundaries, Work Items, and product acceptance criteria. The Architect
-consumes `PRODUCT_READY` Work Items and owns technical architecture, data-model,
+The Product Manager owns the Product overview and linked Capability, Feature,
+Work Item and project Discovery records, including product acceptance criteria.
+Canonical paths and ownership are defined in `governance/artifact-model.md`.
+The Architect consumes `PRODUCT_READY` Work Items and owns technical architecture, data-model,
 backend-interface, UI-structure, and cross-stack scoping decisions, including
 Implementation Tasks. `PRODUCT_READY` means sufficient product definition for
 Architect handoff; it is not permission to implement. The detailed scoping
 format is defined in `AI-BOOTSTRAP.md` and the active role prompt.
 
 Product Manager and Architect use the same `architecture/decisions.md` log for
-their respective confirmed decisions and open items. No separate product
-decision log is created.
+long-lived confirmed decisions, rationale and linked unresolved decision
+questions. No separate product decision log is created. One-time execution
+authorization belongs with its exact scope/task version and source, according
+to `governance/artifact-model.md`, not in the decision log.
+
+Implementation/DevOps assignees may append only their assigned task's Execution
+result section. An assigned Reviewer may append only its Review section. This
+exception does not permit changing approved scope, authorization, shared
+architecture or product requirements.
 
 ## Implementation discipline
 

@@ -1,12 +1,16 @@
 # Decision Log
 
-A shared log of product and technical decisions, their rationale, and open items.
+A shared log of long-lived product and technical decisions, their rationale,
+and unresolved decision questions.
 
 The Product Manager records confirmed product decisions and product open items.
 The Architect records technical and architectural decisions and open items,
 including data model and backend interface decisions. This is the only decision
-log in v0.1; proposed defaults and assumptions remain visible in
-`architecture/product.md` until resolved, not silently confirmed here.
+log; proposed defaults and assumptions remain visible in their linked
+Feature/Work Item specifications and Discovery notes until resolved.
+One-time execution approvals, task status and completion reports belong in
+versioned scope/task records, not here. See
+[the artifact model](../governance/artifact-model.md).
 
 ## How to use this log
 

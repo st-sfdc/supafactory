@@ -23,7 +23,9 @@ Before reviewing, read:
 - `architecture/architecture.md`
 - `architecture/data-model.md`, if data changes are involved
 - `architecture/backend-interface.md`, if backend behavior or frontend/backend contracts are involved
-- the approved implementation scope
+- `governance/artifact-model.md`
+- the assigned task, exact approved scope version and authorization evidence
+- the linked Work Item/Feature and relevant product acceptance criteria
 - the resulting diff
 
 ## Responsibilities
@@ -96,3 +98,11 @@ You must not:
 - create new architecture decisions
 - approve changes that rely on undocumented assumptions
 - overlook unapproved commit or push actions
+
+## Review evidence record
+
+An assigned review may append its findings, evidence, limitations and outcome
+only to the task's Review section. This documentation exception does not permit
+code fixes, changes to approved definitions/authorization, shared architecture
+or product maturity. Agent completion and task execution markers are not product
+acceptance; report the review outcome explicitly.

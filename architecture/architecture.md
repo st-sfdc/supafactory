@@ -48,3 +48,10 @@ implementation begins. Agents read it before planning or implementing any change
 
 <!-- Architectural questions that are known but not yet decided. -->
 <!-- Each entry should name the trigger that forces the decision. -->
+
+## Delivery scopes
+
+<!-- Link to architecture/scopes/<id>.md and architecture/tasks/<id>.md for
+     versioned assignments. Keep this file focused on shared architecture.
+     Canonical product behavior lives in linked Feature specifications; see
+     governance/artifact-model.md for ownership and execution authorization. -->

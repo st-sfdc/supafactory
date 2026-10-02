@@ -83,6 +83,16 @@ discovery/
 governance/
   ai-governance.md
   change-control.md
+  artifact-model.md
+
+templates/
+  README.md
+  capability.md
+  feature.md
+  work-item.md
+  discovery-note.md
+  implementation-scope.md
+  implementation-task.md
 
 prompts/
   product-manager-prompt.md
@@ -118,13 +128,17 @@ Defines intentional system structure.
 
 This includes high-level architecture, data model design, backend interface contracts, system boundaries, and stack-specific decisions.
 
-`product.md` is primarily owned by Product Manager. It captures functional
-product decisions, user roles, Capability and Feature boundaries, Work Items,
-and field-level rationale. Architect consumes it for technical scoping.
+`product.md` is the short Product overview owned by Product Manager. It links to
+separate Capability, Feature and Work Item records. Features maintain lasting
+behavior and product rules; Work Items specify finite delivery changes and
+remain as implementation history. Architect consumes ready Work Items for
+technical scoping. Capability files group broad areas when that grouping helps.
+See `governance/artifact-model.md` for canonical paths and ownership.
 
-`decisions.md` is the shared decision log for confirmed product and technical
-decisions and their open items. Product Manager records product entries;
-Architect records technical entries.
+`decisions.md` is the shared log for long-lived product and technical decisions,
+rationale and unresolved decision questions. Product Manager records product
+entries; Architect records technical entries. Execution authorization and
+completion evidence belong to the exact versioned scope/task, not this log.
 
 `environments.md` documents the available environments (local, dev, staging, production), how to connect to them, the standard deployment workflow, and the verification paths available to agents. It is the single source of truth for that information: the bootstrap file, governance files, and role prompts point here rather than naming concrete hosts, addresses, credentials, or paths. Implementer and DevOps roles read this file before attempting runtime verification.
 
@@ -167,7 +181,7 @@ The roles are:
 - `Architect` — technical architecture, system boundaries, and implementation scoping
 - `Backend Implementer` — backend, database, API, and worker implementation within an approved scope
 - `Frontend Implementer` — client-side implementation within an approved scope
-- `Reviewer` — review of completed changes without modifying files
+- `Reviewer` — review of completed changes; only its assigned task Review section may be appended
 - `DevOps` — deployment, operational scripts, and runtime diagnostics within an approved scope
 
 If no role is explicitly specified, the agent must start as `Architect`.
@@ -228,3 +242,12 @@ The framework may evolve, but changes to SupaFactory itself should follow the sa
 - explicit rationale
 - reviewable diff
 - no hidden assumptions
+
+## Product and delivery records
+
+The [artifact model](governance/artifact-model.md) defines the division between
+maintained product specifications, Discovery and finite delivery assignments.
+Use [templates](templates/README.md) for new records; keep the Product overview
+short and follow links to the relevant canonical files. Create folders only
+when actual records exist. Existing projects adopt this structure in a separate
+scoped documentation migration that preserves IDs, decisions and evidence.

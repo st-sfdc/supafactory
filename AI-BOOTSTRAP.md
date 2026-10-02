@@ -50,6 +50,7 @@ README.md
 AI-BOOTSTRAP.md
 governance/ai-governance.md
 governance/change-control.md
+governance/artifact-model.md
 architecture/architecture.md
 architecture/data-model.md
 architecture/backend-interface.md
@@ -61,6 +62,11 @@ architecture/environments.md
 The framework ships these as empty templates; the project owns them and fills
 them in. A project may not have all of them populated yet. Read the ones that
 exist and state which expected context was missing or still empty.
+
+Load the assigned task, exact scope version and authorization record, linked
+Work Item/Feature and applicable discovery, contracts and environment. The
+Product overview is an index; follow relevant links rather than reading the
+whole backlog. Missing required linked context must be reported.
 
 The agent may load additional project files only when they are relevant to the current task.
 
@@ -85,9 +91,10 @@ Before acting in a role, the agent must read the matching role prompt.
 
 Role-specific behavior is defined in the prompt files under `prompts/`.
 
-Product Manager may update `architecture/product.md` and product decisions or
-open items in `architecture/decisions.md`. Architect may update the technical
-architecture documents named in `prompts/architect-prompt.md` and technical
+Product Manager may update `architecture/product.md`, Capability, Feature,
+Work Item and project Discovery records defined in `governance/artifact-model.md`,
+and product decisions or open items in `architecture/decisions.md`. Architect
+may update the technical architecture documents named in `prompts/architect-prompt.md` and technical
 decisions or open items in the same decision log. These are documentation
 actions within their roles, not application implementation. They may record
 open questions and clearly labeled proposals; confirmed decisions still need
@@ -101,7 +108,10 @@ Discovery is the Product Manager's workflow, not an agent role. The Product
 Manager owns product definition and hands `PRODUCT_READY` Work Items to the
 Architect. The Architect owns technical architecture and implementation
 scoping. The hierarchy is Capability → Feature → Work Item → Implementation
-Task; the Product Manager does not create Implementation Tasks.
+Task, with useful Capability grouping rather than mandatory artificial layers.
+The Product Manager does not create Implementation Tasks. Durable behavior
+belongs in Feature specifications; finite delivery changes belong in Work Items.
+The canonical paths and ownership are defined in `governance/artifact-model.md`.
 
 This bootstrap file defines the mandatory startup behavior, global constraints, approval requirements, and stop conditions.
 
@@ -117,6 +127,11 @@ Approval must be specific enough to identify:
 - what is explicitly out of scope
 
 If approval is ambiguous, the agent must ask for clarification.
+
+Persist execution authorization with its exact scope/task version and source as
+specified in `governance/artifact-model.md`; do not log it as a lasting decision.
+Existing explicit authorization remains sufficient for the same unfinished
+assignment. Completion preserves evidence but ends active assignment authority.
 
 ## Implementation handoff rule
 
@@ -226,3 +241,10 @@ Findings:
 Test/regression evidence:
 Decision: Accept | Request changes | Escalate to Architect
 ```
+
+## Task evidence ownership
+
+Implementation and DevOps assignees may append only their assigned task's
+Execution result section. An assigned Reviewer may append only its Review
+section. Approved definitions and authorization remain Architect-controlled.
+See `governance/artifact-model.md` for these limited documentation permissions.

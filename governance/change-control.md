@@ -47,7 +47,7 @@ A change should usually be split when it combines independently reviewable work,
 
 Cross-stack work must first be scoped by the `Architect`.
 
-The Architect-approved scope should identify:
+The Architect-scoped, human-approved scope should identify:
 
 - affected layers
 - required decisions
@@ -142,3 +142,14 @@ A change set is complete when:
 Agent completion is not the same as human acceptance.
 
 The human decides the next step.
+
+## Artifact and authorization record
+
+Use `governance/artifact-model.md` for canonical records, versioned scopes and
+execution authorization. Work Items are finite delivery changes; Feature files
+remain the maintained product specification. Record assignment-specific human
+authorization at the exact scope/task version, with source and action limits.
+Do not put it in the long-lived decision log. An unfinished unchanged assignment
+may resume under its existing valid approval; completed assignments are history.
+New or materially changed work needs applicable authorization. Adoption in an
+existing application is a separately scoped documentation migration.
