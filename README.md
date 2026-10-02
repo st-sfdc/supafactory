@@ -251,3 +251,12 @@ Use [templates](templates/README.md) for new records; keep the Product overview
 short and follow links to the relevant canonical files. Create folders only
 when actual records exist. Existing projects adopt this structure in a separate
 scoped documentation migration that preserves IDs, decisions and evidence.
+
+## Workstation and runtime workflow
+
+Prefer local source/documentation edits, Git work and available fast checks.
+Use configured remote environments for final builds, deployment and actual
+runtime verification. Define project paths, tools, branches and check allocation
+in [Environments](architecture/environments.md). Match tool versions and
+lockfiles; synchronize exact commits, preserving dirty or divergent checkouts.
+A source push is not deployment authorization.

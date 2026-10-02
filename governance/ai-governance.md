@@ -199,11 +199,24 @@ next viable verification path.
 
 ### Remote verification
 
-A project may declare that runtime and build verification does not happen on the
-local workstation at all. Where it does, `architecture/environments.md` is the
-source of truth for the available environments, their access paths, deploy
-workflows, and review targets. Governance and role prompts must not restate
-concrete hosts, addresses, credentials, or paths.
+Prefer local source/documentation editing and Git work in the configured
+workstation checkout. Run available fast checks there; reserve remote access
+for the configured final build, deployment and runtime verification. Remote
+development remains valid when explicitly configured or local tools are missing.
+`architecture/environments.md` owns concrete paths, prerequisites, access and
+check allocation; framework rules and prompts must not duplicate those details.
+
+Synchronize reviewed commits through Git. Record the repository, branch and exact
+commit in handoffs. Before updating another checkout, inspect its branch and
+working tree; preserve unfinished work instead of force-resetting or discarding
+it. Use fast-forward synchronization when appropriate; report divergence.
+Do not change branch strategy or merge an unrelated branch implicitly.
+
+Use the declared matching tool versions and committed lockfiles. Dependency
+directories are environment-specific and must not be copied between platforms.
+Local tests/builds are separate evidence from the final target build, container
+and actual browser/service verification. Pushing source does not deploy it.
+Commit/push approval never grants deployment or infrastructure approval.
 
 When the human explicitly approves commit/push and remote verification, the
 active Implementer may deploy the pushed branch to the approved environment and

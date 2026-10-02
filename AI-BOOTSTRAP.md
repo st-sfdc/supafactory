@@ -174,10 +174,18 @@ Do not assume the local checkout can run the application. Build tools, package
 managers, language runtimes, Docker, databases, and browser tooling may be
 absent or intentionally unused locally.
 
-Runtime and build verification happens in the environments defined by the
-project in `architecture/environments.md`. That file is the source of truth for
-hosts, access paths, deploy workflows, and review targets. This bootstrap file
-must not name concrete hosts, addresses, credentials, or paths.
+Prefer the configured local workstation checkout for reading/editing source and
+documentation, Git work, and available fast checks. Use remote access for final
+builds, deployment and runtime checks when assigned to a remote environment.
+Do not drive routine per-file edits through SSH when a usable local checkout
+exists. A project may explicitly choose remote development when needed.
+
+`architecture/environments.md` defines checkout locations, tool prerequisites,
+which checks run locally, final build/runtime targets and synchronization. This
+bootstrap file must not name concrete hosts, addresses, credentials, or paths.
+Use matching declared tool versions and committed lockfiles across environments;
+do not copy dependency directories or assume local results verify remote runtime.
+Commit/push authority remains separate from deploy or operational authority.
 
 Agents must report local static checks and runtime verification separately, and
 must state when runtime verification was not possible.

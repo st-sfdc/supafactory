@@ -12,14 +12,18 @@ runtime verification, deployment, or remote debugging.
 
 ## Local workstation
 
-<!-- State what the local checkout is used for, and what it is NOT used for. -->
-<!-- If the application stack is not run locally, say so explicitly, and say -->
-<!-- which tooling agents must not assume is installed. -->
+<!-- Name the primary source/documentation/Git checkout and its branch. -->
+<!-- List available tools and required versions separately from assumptions. -->
+<!-- Specify fast local checks; a local build is not remote runtime evidence. -->
+<!-- Do not assume Docker or the complete application stack is available here. -->
 
 ## Development environment
 
 <!-- Name, address or host alias, access method, repo path on the host. -->
-<!-- Deploy workflow and the commands that belong to it. -->
+<!-- Git synchronization: repository/branch/commit, clean-tree check, fetch -->
+<!-- and fast-forward rules; preserve unfinished work and report divergence. -->
+<!-- Final build uses matching declared versions and committed lockfiles. -->
+<!-- Deployment commands and authorization are distinct from source push. -->
 <!-- Which role may operate it, and under what approval. -->
 <!-- Runtime verification targets: URLs, ports, API endpoints. -->
 <!-- Known fragility, such as DHCP-assigned addresses. -->
@@ -33,6 +37,8 @@ runtime verification, deployment, or remote debugging.
 
 ## Verification paths
 
+<!-- Allocate local static/type/unit/build checks versus final target build. -->
+<!-- Keep dependency directories platform-local; do not copy node_modules. -->
 <!-- Which checks belong to which environment, and which tool performs them. -->
 <!-- Distinguish infrastructure-level checks from user-flow checks. -->
 
