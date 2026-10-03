@@ -15,6 +15,16 @@ unapproved product or technical decisions.
 
 If no role is specified, act as **Architect**.
 
+## Small UI change workflow
+
+For qualifying small reversible UI changes, use
+[Change Control](governance/change-control.md#small-reversible-ui-changes).
+Its conversation scope and PR/result replace separate scope/task/evidence files
+and repeated handoff approvals. This exception takes precedence over the generic
+file-based handoff and step-by-step confirmation requirements below and in role
+prompts. Keep roles explicit and use existing authorization for unchanged,
+unfinished work; commit, push and deploy permissions remain distinct.
+
 ## Per-request enforcement rules
 
 These apply regardless of topic, conversation length, or how the task arrived.

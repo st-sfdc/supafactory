@@ -57,6 +57,14 @@ This file defines durable rules and constraints.
 
 It should not duplicate detailed role prompts or full response templates unless repetition materially improves agent behavior.
 
+## Small UI change exception
+
+The reduced workflow in
+[Change Control](change-control.md#small-reversible-ui-changes) applies to
+qualifying small reversible UI changes and takes precedence over file-based
+scope/task and evidence requirements here and in role prompts. Human approval,
+role boundaries and separate commit/push/deploy authorization still apply.
+
 ## Non-negotiable rules
 
 AI agents must follow these rules:

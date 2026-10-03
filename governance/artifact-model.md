@@ -3,6 +3,14 @@
 This is the authoritative artifact contract. Bootstrap, discovery workflows and
 role prompts reference it; they must not define conflicting storage or ownership.
 
+## Small UI change exception
+
+For [small reversible UI changes](change-control.md#small-reversible-ui-changes),
+the approved conversation scope and PR/result are sufficient records. Separate
+Feature, Work Item, versioned Scope, Task and execution-result files are not
+required solely for that change. The file-based authorization and evidence
+requirements below apply to the full workflow. Preserve historical records.
+
 ## Durable specification and finite delivery
 
 Product specifications describe what the product does and the rules users can
