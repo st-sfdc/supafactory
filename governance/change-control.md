@@ -43,6 +43,49 @@ A change should usually be split when it combines independently reviewable work,
 - implementation and broad documentation cleanup
 - multiple user-visible outcomes
 
+## Small reversible UI changes
+
+Use this reduced workflow for one narrowly bounded presentation, navigation or
+static-asset change within existing frontend behavior (for example a favicon
+or hiding a redundant navigation link). It must be easy to revert and require
+no new product rules, persisted state, database/schema changes, API contracts,
+authentication/authorization changes, dependencies or infrastructure changes.
+Work that crosses these boundaries uses the full scope/task workflow.
+
+1. The Architect records a short scope in the conversation: expected result,
+   affected areas, responsible role, checks and any commit/push/deploy limits.
+   A sufficiently specific human request or existing explicit approval can
+   authorize that scope; do not ask again for an already authorized action.
+   Resolve material ambiguity before editing.
+2. The assigned Frontend Implementer makes the smallest change and runs checks
+   appropriate to its effect. Keep implementation, review and deployment roles
+   explicit; the approved scope may cover these steps without additional
+   handoff approvals for the same unfinished change.
+3. Aim for one implementation commit, when committing is approved. Further
+   fixes may require further commits; do not rewrite history just to meet a
+   commit count. Separate scope/task files and documentation-only commits for
+   authorization, verification results or closeout are not required.
+4. Record the outcome and concise evidence in the PR, or in the final response
+   when there is no PR: what changed, checks and results, verification environment
+   and any unresolved limitation. If deployed, include the deployed commit and
+   timestamp. Screenshots or extra hashes are only needed when they help assess
+   a specific visual result or investigate a problem.
+5. Existing approval remains valid for the same unfinished scope, including
+   approved role handoffs and checks. Commit, push and deployment each still
+   require applicable explicit authorization. Approval for one action or target
+   does not authorize another. Tool-enforced permission grants remain separate.
+
+The conversation is the scope and approval record; the PR/result is the delivery
+record. These are sufficient for this workflow. Do not create artificial
+Feature/Work Item/Task layers or duplicate the same evidence in repository files.
+Update existing user-facing documentation only when the change makes it wrong.
+
+This exception takes precedence over requirements for separate versioned scope,
+task and execution-evidence files in bootstrap, artifact rules and role prompts.
+It does not waive role boundaries, human approval, appropriate verification,
+scope limits or protection of existing work. If broader work is discovered,
+report it and obtain approval for the full workflow before expanding the change.
+
 ## Cross-stack changes
 
 Cross-stack work must first be scoped by the `Architect`.

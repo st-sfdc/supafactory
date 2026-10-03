@@ -57,6 +57,14 @@ This file defines durable rules and constraints.
 
 It should not duplicate detailed role prompts or full response templates unless repetition materially improves agent behavior.
 
+## Small UI change exception
+
+The reduced workflow in
+[Change Control](change-control.md#small-reversible-ui-changes) applies to
+qualifying small reversible UI changes and takes precedence over file-based
+scope/task and evidence requirements here and in role prompts. Human approval,
+role boundaries and separate commit/push/deploy authorization still apply.
+
 ## Non-negotiable rules
 
 AI agents must follow these rules:
@@ -184,6 +192,10 @@ remain in the working tree and be reported for human review.
 
 Agents must report verification evidence honestly and separate local static
 checks from runtime/browser verification.
+
+For every change size, repository task records contain only concise check
+results and material failures/findings. Full logs and UI-test protocols belong
+in PR/CI, not committed documents. See `governance/artifact-model.md`.
 
 Local static checks include search audits, diff checks, formatting checks, and
 build or test commands available in the local environment.

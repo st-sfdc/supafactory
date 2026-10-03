@@ -3,6 +3,14 @@
 This is the authoritative artifact contract. Bootstrap, discovery workflows and
 role prompts reference it; they must not define conflicting storage or ownership.
 
+## Small UI change exception
+
+For [small reversible UI changes](change-control.md#small-reversible-ui-changes),
+the approved conversation scope and PR/result are sufficient records. Separate
+Feature, Work Item, versioned Scope, Task and execution-result files are not
+required solely for that change. The file-based authorization and evidence
+requirements below apply to the full workflow. Preserve historical records.
+
 ## Durable specification and finite delivery
 
 Product specifications describe what the product does and the rules users can
@@ -107,6 +115,20 @@ the same valid authorization without asking for the same approval again.
 Completion ends the active assignment; evidence remains historical. A new run,
 new task, changed scope or new operational action needs applicable authorization
 and cannot reuse a completed assignment as an open-ended permission.
+
+## Verification summaries and detailed protocols
+
+For every change size, an existing task's Execution result or Review section
+contains a short summary: checks performed, success/failure and any material
+failure, unresolved limitation or review finding. Link the PR/CI run when useful.
+Do not paste command output, full UI-test transcripts or detailed protocols into
+repository documents, or commit screenshots solely as verification evidence.
+Detailed logs and reports belong in CI, the PR or an approved external tracker.
+
+This does not require a new evidence file or a separate documentation-only commit
+to record verification. For the small UI workflow without a task file, the PR
+or final response holds the summary. Test source and reusable test configuration
+remain versioned. Preserve existing historical records.
 
 ## Ownership and handoff
 
