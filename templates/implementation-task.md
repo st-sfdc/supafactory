@@ -48,13 +48,13 @@ Deploy/start/operational changes: Not authorized
 
 <!-- Only the assigned Implementer/DevOps may append its result here.
      Architect maintains the execution marker based on this evidence. -->
-<Assignee/date; changed files or commands/targets; checks and results; runtime
-verification performed or missing; deviations, limitations and completion.
+<Brief summary: checks and success/failure; material failures or unresolved
+limitations; completion; optional PR/CI link. No full logs or test protocols.
 Do not mark product accepted or authorize further work.>
 
 ## Review
 
 <!-- Only an assigned Reviewer may append its review here. -->
-<Reviewer/date/assignment source; reviewed scope and diff; evidence; findings;
-Accept | Request changes | Escalate to Architect; limitations and follow-ups.
+<Brief review outcome: Accept | Request changes | Escalate to Architect;
+material findings, limitations and optional PR/CI link. No full protocols.
 No code fixes, deployment or product maturity change.>

@@ -266,3 +266,7 @@ Implementation and DevOps assignees may append only their assigned task's
 Execution result section. An assigned Reviewer may append only its Review
 section. Approved definitions and authorization remain Architect-controlled.
 See `governance/artifact-model.md` for these limited documentation permissions.
+
+Task evidence means a short success/failure summary and material findings, not
+full test protocols or command logs. Keep detailed reports in PR/CI according to
+`governance/artifact-model.md`.

@@ -193,6 +193,10 @@ remain in the working tree and be reported for human review.
 Agents must report verification evidence honestly and separate local static
 checks from runtime/browser verification.
 
+For every change size, repository task records contain only concise check
+results and material failures/findings. Full logs and UI-test protocols belong
+in PR/CI, not committed documents. See `governance/artifact-model.md`.
+
 Local static checks include search audits, diff checks, formatting checks, and
 build or test commands available in the local environment.
 
